@@ -1,0 +1,144 @@
+[print]
+name = Cura Matteo_PLA_setting
+defaultQuality = OHNQQypGdQv9YXZDgdzncFzPCpwQu4Tj
+travelSpeedMin = 100
+travelSpeedMax = 100
+firstLayerSpeedMin = 30
+firstLayerSpeedMax = 30
+infillSpeedMin = 50
+infillSpeedMax = 60
+infillType = 0
+innerPerimeterMin = 30
+innerPerimeterMax = 60
+outerPerimeterMin = 30
+outerPerimeterMax = 60
+printSpeedMin = 30
+printSpeedMax = 50
+nozzleDiameter = 0.5
+gcodeFlavour = 0
+retractionCombing = True
+multiVolumeOverlap = 0
+cutOffObjectBottom = 0
+shellThickness = 1
+infillTopBottomThickness = 0.9
+infillDensityPercent = 20
+supportType = 0
+platformAdhesion = 0
+dualExtrusion = 0
+wipeAndPrimeTower = False
+oozeShield = False
+enableRetraction = True
+retractionSpeed = 40
+retractionDistance = 1
+multiExtruderSwitchAmount = 16
+startGCode = """
+; Default start code
+; M220 S* Velocità
+; M221 S* Flusso
+; M600 X30 Y160 Z5 E0 L0  Sospensione stampa con LCD
+; M106 S* Accende ventola
+; M107 Spegne ventola
+; M92 X* Y* Z* E* cambia passi ai motori
+; G92 X* Y* Z* E* Imposta punto zero degli assi
+G21       ;metric value
+G90       ;Absolute positioning
+M140 S65  ;faccio partire il lettino
+G28       ;X0 Y0 Z0 Home axis
+;G29       ;auto bed leveling
+G0 Z3
+M109 T0 S190  ;aspetta temperatura estrusore
+T0
+M190 S65      ;aspetta temperatura lettino
+;M140 S110     ;imposto temperatura a 110 gradi lettino
+M82                  ; Extruder in absolute mode
+G92 E0               ; Reset extruder position
+G1 F200 E3           ;extrude 3mm of feed stock
+G92 E0               ;zero the extruded length again
+"""
+endGCode = """
+; Default end code
+M107 ; Turn off fan
+; Disable all extruder
+G91 ; Relative positioning
+{IF_EXT0}T0
+{IF_EXT0}G1 E-1 F300  ; Reduce filament pressure
+G28 X0 ; Get extruder out of way. 
+M104 T0 S0
+G90 ; Absolute positioning
+G92 E0 ; Reset extruder position
+M140 S0 ; Disable heated bed
+M84 ; Turn steppers off
+"""
+preSwitchExtruderCode = 
+postSwitchExtruderCode = 
+wipeAndPrimeTowerVolume = 15
+retractionMinimumTravel = 1.5
+minimumExtrusionBeforeRetract = 0.02
+zhop = 0
+skirtLineCount = 3
+skirtDistance = 3
+skirtMinimumLength = 120
+solidInfillTop = True
+solidInfillBottom = True
+infillOverlapPercent = 15
+supportStructureType = 0
+supportOverhang = 60
+supportFillPercent = 15
+supportDistanceXY = 2
+supportDistanceZ = 0.3
+supportExtruder = -1
+spiralizeOuterContour = False
+brimWidth = 10
+raftExtraMargin = 5
+raftLineSpacing = 1
+raftBaseThickness = 0.3
+raftBaseWidth = 0.7
+raftInterfaceThickness = 0.2
+raftInterfaceLineWidth = 0.2
+raftAirGap = 0
+raftAirGapLayer0 = 0
+raftSurfaceLayer = 1
+fixCombineEverythingA = True
+fixCombineEverythingB = False
+fixKeepOpenFaces = False
+fixExtensiveStitching = False
+fanFullAtHeight = 0.5
+minimumSpeed = 10
+coolHeadLift = False
+numQuality = 6
+[quality_0]
+name = 0.4 mm
+signature = UgZfbeWSxzGUkIgX2Zay6PSwo1AhZUpA
+layerHeight = 0.3
+layer0widthPercent = 120
+firstLayerHeight = 0.3
+[quality_1]
+name = 0.3 mm
+signature = WlAxNR2kk76UhbfsluGebFpzX0qpR8BU
+layerHeight = 0.3
+layer0widthPercent = 120
+firstLayerHeight = 0.3
+[quality_2]
+name = 0.25 mm
+signature = 7I2MnjoOYC0uWzNoQ1UdOUSIBhfcMxab
+layerHeight = 0.25
+layer0widthPercent = 120
+firstLayerHeight = 0.3
+[quality_3]
+name = 0.2 mm
+signature = icSm7pZy6OBZ1Nd22mzBiF7llum7WHoa
+layerHeight = 0.2
+layer0widthPercent = 120
+firstLayerHeight = 0.3
+[quality_4]
+name = 0.15
+signature = mFbKJ9MuSM4DkA8yAElBEkBdWSyJUzhc
+layerHeight = 0.15
+layer0widthPercent = 120
+firstLayerHeight = 0.3
+[quality_5]
+name = 0.1mm
+signature = OHNQQypGdQv9YXZDgdzncFzPCpwQu4Tj
+layerHeight = 0.1
+layer0widthPercent = 120
+firstLayerHeight = 0.3

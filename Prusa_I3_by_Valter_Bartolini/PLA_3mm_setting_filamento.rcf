@@ -1,0 +1,10 @@
+[filament]
+name = PLA_3mm_setting_filamento
+diameter = 3
+multiplierPercent = 100
+printingTemperature = 185
+enableCooling = True
+bedTemperature = 65
+fanSpeedMin = 50
+fanSpeedMax = 100
+minimalLayerTime = 5
